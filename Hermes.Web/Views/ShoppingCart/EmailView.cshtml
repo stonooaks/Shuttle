@@ -1,0 +1,25 @@
+﻿@if (ViewBag.type == "new") {
+    @Html.Action("MemberEmail", new { regularId = ViewBag.regularId})
+    <div class="btn-group">
+        <button class="btn btn-success" onclick="location.href='@Url.Action("SendEmail", new { regularId = ViewBag.regularId, Email = ViewBag.Email})'">Send</button>
+        <button class="btn btn-default" onclick="location.href='@Url.Action("Details", "Regular", new { id = ViewBag.regularId })'">Back</button>
+    </div>
+        }
+        
+        else if(ViewBag.type == "edit") {
+            @Html.Action("EditionEmail", new { regularId = ViewBag.regularId})
+            <div class="btn-group">
+                <button class="btn btn-success" onclick="location.href='@Url.Action("SendEmail", new { regularId = ViewBag.regularId, email = ViewBag.Email, cancellation = false, edit = true})'">Send</button>
+                <button class="btn btn-default" onclick="location.href='@Url.Action("Details", "Regular", new { id = ViewBag.regularId })'">Back</button>
+            </div>
+        }
+        else if(ViewBag.type == "cancel") {
+            @Html.Action("CancellationEmail", new { regularId = ViewBag.regularId})
+            <div class="btn-group">
+                <button class="btn btn-success" onclick="location.href='@Url.Action("SendEmail", new { regularId = ViewBag.regularId, Email = ViewBag.Email, cancellation = true})'">Send</button>
+                @*<button class="btn btn-default" onclick="location.href='@Url.Action("Index", "Regular", new { regularId = ViewBag.regularId })'">Back</button>*@
+                </div>
+                }
+
+
+

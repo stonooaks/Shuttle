@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Hermes.ViewModels.ReportViewModel.DriverLogViewModel>
+
+<div style="text-align:center;position:relative;">
+    <img src="../../Images/KICALogo%20(low-res).jpg" alt="" height="60" width="180"/>
+</div>
+<h3 style="text-align:center;position:relative;">Driver Log</h3>
+<div style="text-align: center; position: relative; font-weight:900;">
+    @ViewBag.Date
+</div>
+<br />
+<p style="text-align:center;position:relative;font-size:small">
+    Driver:________________________________________  Time On:__________________________ TimeOff:____________________<br /><br />
+    Driver:________________________________________  Time On:__________________________ TimeOff:____________________
+</p>
+<br />
+<style>
+    td, th {
+        font-size: small;
+        border: 1px solid black;
+        padding: 1px 5px 1px 5px;
+    }
+</style>
+<div id="searchDate">
+    <table class="table table-bordered" align="center" style="position:relative">
+
+        <tr style="background-color:lightgrey ">
+            <th>Pickup Time</th>
+            <th>Guest</th>
+            <th>Pickup Location</th>
+            <th>Drop Off Location</th>
+            <th>Destination</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th># of Passengers</th>
+            <th width="25px">Notes</th>
+        </tr>
+        <tbody>
+
+            @foreach (var item in Model.OrderBy(x=>x.PickupTime)) {
+                <tr>
+                    <td class="col-md-1">@item.PickupTime.ToShortTimeString()</td>
+                    <td>@item.Member</td>
+                    <td width="125px">@item.PickupLocation</td>
+                    <td>@item.Destination</td>
+                    <td>@item.TripType</td>
+                    <td style="font-size:x-small">@item.Phone</td>
+                    <td width="125px">@item.emailaddress</td>
+                    <td>@item.Count</td>
+                    <td width="125px">@item.Notes</td>
+                </tr>
+                      
+                
+            }
+
+
+
+        </tbody>
+    </table>
+</div>
+

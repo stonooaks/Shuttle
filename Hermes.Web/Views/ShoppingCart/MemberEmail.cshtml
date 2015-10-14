@@ -1,0 +1,78 @@
+﻿@model Hermes.ViewModels.MainViewModels.ShoppingCartViewModel
+
+<br />
+
+<p></p>
+<p></p>
+<div></div>
+<p><p>@System.DateTime.Now.ToString("MMMM dd, yyyy")</p></p><br />
+@Model.Regular.Household.Name<br />
+@Model.KiawahAddress <br />
+@Model.Regular.Phone
+
+<br />
+<br />
+<br />
+
+<div>
+    RE: CONFIRMATION EMAIL
+    <br />
+    <br />
+    <br />
+
+    Dear @Model.MemberName, <br />
+    <br /><br />
+    Thank you for choosing the Kiawah Shuttle Service by KICA for your travel needs.<br /><br />
+
+    You have requested a @Html.DisplayFor(model => model.Regular.TripType.Name) reservation for @Model.Count guests. We will pick you up at<br />
+    @Model.KiawahLocation on @Model.Date at @Model.PickupTime and drop you off at @Model.TripLocation.
+
+    <br />
+    @if (!Model.Regular.TripType.Name.Contains("Airport")) {
+
+        foreach (var item in Model.Regular.ReturnTrips) {
+            <div>
+                Your return trip will be from @item.TripLocation at @Model.ReturnTime to @item.KiawahLocation.
+            </div>
+        }
+    }
+
+
+    <br />
+    <br />
+    @if (Model.Regular.AdditionalTrips.Count() > 0) {
+        <div>
+            You have requested additional services:
+            <ul>
+                @foreach (var item in Model.Regular.AdditionalTrips) {
+                    <li>@item.Additional.Name - @item.Notes</li>
+                }
+            </ul>
+        </div>
+
+    }
+    <br />
+    $@Model.TotalCost will be charged to your member account upon completion of your reservation.<br />
+    <br /><br />
+    We appreciate you choosing KICA.  If you have any questions or changes to your travel plans, please<br />
+    contact us at 843-768-5566 or shuttle@kica.us.  On the day of travel, you may reach your driver at<br />
+    843-277-7082.<br />
+    <br />
+    <br />
+    Sincerely,
+    <br />
+    <br />
+    <br />
+    Kiawah Island Community Association<br />
+    <br />
+
+    <p style="font-style:italic; font-size:8pt">
+        *Gratuities are graciously accepted for exceptional service.<br />
+        <br />
+        *Terms: By receipt of this email you authorize the Kiawah Island Community Association to charge your member
+        account as mentioned above.
+
+</div>
+
+
+

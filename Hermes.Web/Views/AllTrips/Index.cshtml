@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Hermes.Data.Models.Regular>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Trips for @ViewBag.Date</h2>
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create", new { HHID = ViewBag.HHID, Date = ViewBag.Date })
+</p>*@
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PickupTime)
+        </th>
+        <th>
+            Trip Type
+        </th>
+        <th>
+            Pickup Location
+        </th>
+        <th>
+            DropOff Location
+        </th>
+        <th>
+            Number of Guests
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KiawahLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripLocation)
+            </td>
+               <td>
+                   @Html.DisplayFor(modelItem => item.Count) / 10
+               </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+       
+            
+            
+        <tr>
+           @foreach (var rtrip in item.ReturnTrips) {
+               
+           
+                <td>
+                    @Html.DisplayFor(modelitem => rtrip.PickupTime)
+                </td>
+
+                <td>
+                    Return Trip
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelitem => rtrip.TripLocation)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelitem => rtrip.KiawahLocation)
+                </td>
+               <td>
+
+               </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "ReturnTrip", new { id = rtrip.Id }) |
+                    @Html.ActionLink("Details", "Details", "ReturnTrip", new { id = rtrip.Id }) |
+                    @Html.ActionLink("Delete", "Delete", "ReturnTrip", new { id = rtrip.Id })
+                </td>
+           }
+            
+
+
+        </tr>
+        <tr>
+           <td>
+               <br />
+           </td>
+       </tr>
+    }
+
+</table>
+<div>
+    @using (Html.BeginForm("Create", "Regular", FormMethod.Get)) {
+
+        <input type="hidden" value="@ViewBag.Date" name="Date" />
+        <input type="hidden" value="@ViewBag.HHID" name="HHID" />
+        <input type="hidden" value="@ViewBag.MemberId" name="MemberId" />
+        <button type="submit">Create Trip</button>
+    }
+</div>

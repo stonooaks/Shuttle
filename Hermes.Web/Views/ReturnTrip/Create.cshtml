@@ -1,0 +1,61 @@
+﻿@model Hermes.Data.Models.ReturnTrip
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ReturnTrip</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+
+
+        @Html.HiddenFor(model => model.RegularId)
+        @Html.ValidationMessageFor(model => model.RegularId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PickupTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PickupTime)
+                @Html.ValidationMessageFor(model => model.PickupTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TripLocation,"Pickup Location",new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TripLocation)
+                @Html.ValidationMessageFor(model => model.TripLocation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KiawahLocation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBox("KiawahLocation", ViewBag.KiawahLocation as SelectList, String.Empty)
+                @Html.ValidationMessageFor(model => model.KiawahLocation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="hidden" value="@ViewBag.Date" name="selectedDateParam" />
+                <input type="hidden" value="@ViewBag.HHID" name="HHID" />
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @using (Html.BeginForm("Details", "Regular", FormMethod.Get)) {
+        <input type="hidden" value="@ViewBag.RegularId" name="id" />
+        <button type="submit">Go Back</button>
+    }
+</div>

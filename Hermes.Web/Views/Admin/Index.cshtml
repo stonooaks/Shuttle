@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Admin Panel";
+}
+
+<h2>Admin Panel</h2>
+ <div class="jumbotron">
+     <table class="table">
+         <tr>
+             <td>
+                 Trip Types
+             </td>
+             <td>
+                 @using (Html.BeginForm("Index", "TripType", FormMethod.Get)) {
+                     <button class="btn btn-primary" type="submit">Trip Type</button>
+                 }
+             </td>
+         </tr>
+         <tr>
+             <td>
+                 Drivers
+             </td>
+             <td>
+                 @using (Html.BeginForm("Index", "Driver", FormMethod.Get)) {
+                        <button class="btn btn-primary" type="submit">Drivers Management</button>
+                 }
+             </td>
+         </tr>
+         <tr>
+             <td>
+                 Trip Cost
+             </td>
+             <td>
+                 @using (Html.BeginForm("Index", "Cost", FormMethod.Get)) {
+                     <button class="btn btn-primary" type="submit">Trip Costs</button>
+                 }
+             </td>
+
+         </tr>
+        
+         <tr>
+             <td>
+                 Additional Items
+             </td>
+             <td>
+                 @using (Html.BeginForm("Index", "Additional", FormMethod.Get)) {
+                     <button class="btn btn-primary" type="submit">Additional Items</button>
+                 }
+             </td>
+
+         </tr>
+
+         <tr>
+             <td>
+                 Authorized User
+             </td>
+             <td>
+                 @using (Html.BeginForm("Index", "AuthorizedUser", FormMethod.Get)) {
+                     <button class="btn btn-primary" type="submit">Authorized Users</button>
+                 }
+             </td>
+
+         </tr>
+
+         <tr>
+             <td>
+                 Exit Admin Panel
+             </td>
+             <td>
+                 @using (Html.BeginForm("Index", "Home", FormMethod.Get)) {
+                     <button class="btn btn-danger" type="submit">Exit Admin</button>
+                 }
+             </td>
+
+         </tr>
+     </table>
+
+ </div>

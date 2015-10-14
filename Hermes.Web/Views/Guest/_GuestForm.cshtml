@@ -1,0 +1,9 @@
+﻿@model Hermes.Data.Models.Guest
+
+@Html.HiddenFor(m => m.RegularId)
+
+<div>
+    @Html.LabelFor(m => m.Name)
+    @Html.EditorFor(m => m.Name)
+</div>
+<button type="submit">Add Guest</button>

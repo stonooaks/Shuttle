@@ -1,0 +1,80 @@
+﻿@model Hermes.Data.Models.Regular
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Regular</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TripType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TripType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KiawahLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KiawahLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TripLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TripLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickupTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupTime)
+        </dd>
+
+       <dt>
+            @Html.DisplayNameFor(model => model.OfficerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OfficerName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Cancel" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index", new { selectDateParam = ViewBag.Date, HHID = ViewBag.HHID })
+        </div>
+    }
+</div>

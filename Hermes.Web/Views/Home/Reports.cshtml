@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Reports";
+}
+
+<h2>Reports</h2>
+<br />
+<div class="jumbotron">
+    <p>
+        @using (Html.BeginForm("DailyReport", "Report", FormMethod.Get)) {
+
+            <h4>Driver Log</h4>
+            <div>Insert Date for Log</div>
+            <input type="date" name="Date" class="input-sm" />
+            <button type="submit" class="btn btn-default btn-sm">GO</button>
+        }
+    </p>
+
+    <p>
+        @using (Html.BeginForm("DailyReportDate", "Report", FormMethod.Get)) {
+            <h4>Driver Log Between Dates</h4>
+            <div>Insert Dates for Log</div>
+            <span>
+                <input type="date" name="StartDate" class="input-sm" />
+                to
+                <input type="date" name="EndDate" class="input-sm" />
+                <button type="submit" class="btn btn-default btn-sm">Go</button>       
+            </span>
+        }
+    </p>
+
+    <p>
+        @using (@Html.BeginForm("OwnerReport", "Report", FormMethod.Get)) {
+            <h4>Trips by Owner</h4>
+            <b>Household Name</b>
+            @Html.TextBox("searchTerm", null, new { id = "txtSearch" })
+            <button class="btn btn-default btn-sm" onclick="@Url.Action("OwnerReport", "Report")">Select</button>
+        }
+    </p>
+
+</div>
+<script type="text/javascript">
+    $(function () {
+
+        $("#txtSearch").autocomplete({
+            source: '@Url.Action("OwnerNames")',
+            minLength: 2
+        });
+
+        
+        $("#txtSearch").keyup(function (event) {
+            if (event.keyCode == 13) {
+                $("searchButton").click();
+            }
+
+        });
+    })
+</script>

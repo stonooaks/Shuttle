@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Hermes.Data.Models.Bus>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BusTime.StopLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Driver.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Guest.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Intersection.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kiawah.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RouteStop.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripType.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusTime.StopLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Driver.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Guest.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Intersection.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kiawah.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RouteStop.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

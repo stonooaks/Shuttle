@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Hermes.Data.Models.Cost>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TripType.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.twoperprice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.addperprice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.twoperprice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.addperprice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @using (Html.BeginForm("Index", "Admin", FormMethod.Get)) {
+        <button class="btn btn-block" type="submit">Return to Admin</button>
+    }
+</div>

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Hermes.Data.Models.Guest>
+
+<div id="guests">
+    <ul>
+        @foreach (var guest in Model) {
+            <li style="">@guest.Name</li>
+            @Html.ActionLink("Delete", "Delete", "Guest", new{ guestId = guest.Id})
+        }
+    </ul>
+
+
+    @using (Ajax.BeginForm("_Submit", "Guest", new AjaxOptions() { UpdateTargetId = "guests"})) {
+        @Html.AntiForgeryToken()
+        @Html.Action("_GuestForm", "Guest", new { RegularId = ViewBag.RegularId })
+    }
+</div>

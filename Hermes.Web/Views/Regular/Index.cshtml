@@ -1,0 +1,128 @@
+﻿@model IEnumerable<Hermes.Data.Models.Regular>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>@ViewBag.Date</h3>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PickupTime)
+        </th>
+        <th>
+            Trip Type
+        </th>
+        <th>
+            Pickup Location
+        </th>
+        <th>
+            DropOff Location
+        </th>
+        <th>
+            Number of Guests
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupTime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TripType.Name)
+            </td>
+
+            @if (item.NonKiawahPickup == false) {
+                <td>
+                @Html.DisplayFor(modelItem => item.KiawahLocation)
+            </td>
+            }
+            else {
+                <td>@Html.DisplayFor(modelItem => item.TripLocation)</td>
+            }
+            @if (item.NonKiawahPickup == true) {
+                <td>
+                    @Html.DisplayFor(modelItem => item.KiawahLocation)
+                </td>
+            }
+            else {
+                <td>@Html.DisplayFor(modelItem => item.TripLocation)</td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.KiawahLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count) / 10
+            </td>
+            <td class="col-sm-1"><button class="btn btn-xs btn-default" onclick="location.href='@Url.Action("Details", "Regular", new { id = item.Id})'">Go To Trip</button></td>
+        </tr>
+
+
+
+
+
+        @foreach (var rtrip in item.ReturnTrips) {
+
+            if (item.ReturnTrips != null) {
+
+                <tr>
+
+
+
+                    <td>
+                        @Html.DisplayFor(modelitem => rtrip.PickupTime)
+                    </td>
+
+                    <td>
+                        Return Trip
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelitem => rtrip.TripLocation)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelitem => rtrip.KiawahLocation)
+                    </td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-xs btn-default" onclick="location.href='@Url.Action("Edit", "ReturnTrip", new { id = rtrip.Id})'">Edit ReturnTrip</button>
+                    </td>
+
+
+
+
+                </tr>
+            }
+
+        }
+        <tr>
+            <td>
+                <br />
+            </td>
+        </tr>
+        </tbody>
+    }
+
+    
+
+        </table>
+<div>
+    @using (Html.BeginForm("Create", "Regular", FormMethod.Get)) {
+
+        <input type="hidden" value="@ViewBag.Date" name="Date" />
+        <input type="hidden" value="@ViewBag.HHID" name="HHID" />
+        <input type="hidden" value="@ViewBag.MemberId" name="MemberId" />
+        <button class="btn btn-default" type="submit">Create Trip</button>
+    }
+</div>

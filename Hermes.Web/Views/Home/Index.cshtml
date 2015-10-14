@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Hermes.Data.Models.Member>
+<script src="~/Scripts/jquery-ui-1.10.4.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="jumbotron" style="background-color:#d3d4b2">
+   
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post)) { 
+        <b>Member Name</b>
+        @Html.TextBox("searchTerm", null, new { @class = "input-sm", id = "txtSearch" })
+        <button class="btn btn-default btn-sm" type="submit">Select</button>
+    }
+   
+
+
+</div>
+
+
+
+
+@*<div>
+        <iframe src="http://www.google.com/calendar/embed?src=shuttle%40kica.us&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>*@
+<script type="text/javascript">
+
+    $(function () {
+        init();
+        showCalendar();
+    });
+
+
+    function init() {
+
+        $("#txtSearch").autocomplete({
+            source: '@Url.Action("GetMembers")',
+            minLength: 2
+
+
+
+        });
+
+        $("#txtSearch").keyup(function (event) {
+            if (event.keyCode == 13) {
+                $("#SearchButton").click();
+            }
+        });
+    }
+
+    function showCalendar(){
+
+        var $calendar = $('#calendar');
+
+        $calendar.fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            events:
+            {
+                url: '@Url.Action("CalendarItems")',
+                color: "green",
+                textColor: "black"
+            },
+            defaultView: "agendaWeek",
+            agenda: 'h:mm{ - h:mm}',
+
+
+        });
+    }
+
+</script>

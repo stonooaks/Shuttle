@@ -1,0 +1,33 @@
+﻿@model Hermes.Data.Models.Regular
+@{
+    ViewBag.Title = "EmailResponse";
+}
+
+<p>@ViewBag.Date</p>
+<br />
+<br />
+<p>Dear @ViewBag.Member</p>
+<br />
+<br />
+
+<p>
+    Thank you for choosing KICA's Shuttle for your travel needs.
+    <br />
+    <br />
+    You have requested a @Model.TripType.Name reservation for @ViewBag.Count guests.  We will pick you up at @Model.KiawahLocation
+    on @Model.Date at @Model.PickupTime and drop you off at @Model.TripLocation.
+    <br />
+    <br />
+    @ViewBag.Cost will be charged to your member account.
+    <br />
+    <br />
+    We appreciate you choosing KICA.  If you have any questions or changes to your reservation, please contact us at 
+    843-768-5566 or <a href="mailto:shuttle@kica.us?Subject=Shuttle%20Issue">email us</a>.
+    <br />
+    <br />
+    Sincerely,
+    <br />
+    <br />
+    Kiawah Island Community Association
+</p>
+

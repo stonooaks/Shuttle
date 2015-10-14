@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "DailyReportWrap";
+}
+
+<div class="jumbotron">
+    @using (Ajax.BeginForm("DailyReport", "Report",
+    new AjaxOptions
+    {
+        InsertionMode=InsertionMode.Replace,
+        HttpMethod = "GET",
+        UpdateTargetId = "searchDate"
+    })) {
+        <input type="date" name="Date" />
+        <input type="submit" value="Search" />
+
+
+    }
+</div>
+

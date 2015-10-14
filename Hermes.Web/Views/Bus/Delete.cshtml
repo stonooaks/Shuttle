@@ -1,0 +1,88 @@
+﻿@model Hermes.Data.Models.Bus
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Bus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BusTime.StopLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusTime.StopLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Guest.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Guest.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Intersection.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Intersection.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kiawah.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kiawah.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RouteStop.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouteStop.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TripType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TripType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

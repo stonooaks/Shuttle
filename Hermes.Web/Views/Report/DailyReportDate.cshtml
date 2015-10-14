@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Hermes.ViewModels.ReportViewModel.DriverLogViewModel>
+
+<div style="text-align:center;position:relative;">
+    <img src="../../Images/KICALogo%20(low-res).jpg" alt="" height="60" width="180" />
+</div>
+<h3 style="text-align:center;position:relative;">Reservation Log</h3>
+<div style="text-align: center; position: relative; font-weight:900;">
+    @ViewBag.StartDate - @ViewBag.EndDate
+</div>
+<br />
+@*<p style="text-align:center;position:relative;font-size:small">
+        Driver:________________________________________  Time On:__________________________ TimeOff:____________________<br /><br />
+        Driver:________________________________________  Time On:__________________________ TimeOff:____________________
+    </p>*@
+<br />
+<style>
+    td, th {
+        font-size: small;
+        border: 1px solid black;
+        padding: 1px 5px 1px 5px;
+    }
+</style>
+<div id="searchDate">
+    <table class="table table-bordered" align="center" style="position:relative">
+
+        <tr style="background-color:lightgrey ">
+            <th>Date</th>
+            <th>Household</th>
+            <th>Kiawah Address</th>
+            <th>Pickup Location</th>
+            <th>Drop Off Location</th>
+            <th>Destination</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th># of Passengers</th>
+            <th>Cost</th>
+            <th width="25px">Notes</th>
+        </tr>
+        <tbody>
+
+            @foreach (var item in Model.OrderBy(x => x.Date)) {
+                <tr>
+                    <td class="col-md-1"><a href="@Url.Action("Details", "Regular", new { Id=item.regularId })">@item.Date.ToShortDateString()</a></td>
+                    <td>@item.Household</td>
+                    <td>@item.KiawahAddress</td>
+                    <td width="125px">@item.PickupLocation</td>
+                    <td>@item.Destination</td>
+                    <td>@item.TripType</td>
+                    <td style="font-size:x-small">@item.Phone</td>
+                    <td width="125px">@item.emailaddress</td>
+                    <td>@item.Count</td>
+                    <td width="50">&#36 @item.Cost</td>
+                    <td width="125px">@item.Notes</td>
+
+                </tr>
+
+
+            }
+
+
+
+
+
+        </tbody>
+    </table>
+    <p>
+        <div style="text-align:right"><strong>Sum Total: $ @ViewBag.SumTotal</strong></div>
+    </p>
+</div>
+

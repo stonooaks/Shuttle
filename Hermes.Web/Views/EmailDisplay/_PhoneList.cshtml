@@ -1,0 +1,36 @@
+﻿@model Hermes.Web.ViewModels.EmailViewModel
+
+<div id="lists">
+    
+
+        @using (Html.BeginForm("_AddPhone", "EmailDisplay", FormMethod.Post)) {
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Phones, "Phone", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("PhoneList", String.Empty)
+                    @Html.ValidationMessageFor(model => model.Phones)
+                    <button type="submit">Add Phone</button>
+                </div>
+            </div>
+
+        }
+
+        @using (Html.BeginForm("_AddEmail", "EmailDisplay", FormMethod.Post)) {
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Emails, "Email", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("EmailList", String.Empty)
+                    @Html.ValidationMessageFor(model => model.Emails)
+                    <button type="submit">Add Email</button>
+                </div>
+            </div>
+
+        }
+        @using (Html.BeginForm("Create", "EmailDisplay", FormMethod.Post)) {
+            
+        <button type="submit">Update</button>
+            
+        }
+</div>

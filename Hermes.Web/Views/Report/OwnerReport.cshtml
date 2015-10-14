@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Hermes.ViewModels.ReportViewModel.OwnerCheckViewModel>
+
+<div class="container">
+    @{
+        ViewBag.Title = "Owner Report";
+    }
+
+
+    <h2>Owner's Trip Log</h2>
+    <br />
+    <br />
+    <h4><strong>Household Name:</strong> @ViewBag.Owner</h4>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <div class="jumbotron">
+        <table class="table">
+            <tr>
+                <th>Date of Trip</th>
+                <th>Trip Type</th>
+                <th>Number of Guests</th>
+            </tr>
+
+            @foreach (var item in Model.OrderBy(x => x.Date)) {
+
+                <tr>
+                    <td class="col-lg-4"><a href="@Url.Action("Details", "Regular", new { Id=item.regularId })">@item.Date.ToShortDateString()</a></td>
+                    <td class="col-lg-3">@item.TripType</td>
+                    <td class="col-lg-1">@item.Count</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

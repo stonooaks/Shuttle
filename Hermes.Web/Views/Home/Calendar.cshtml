@@ -1,0 +1,41 @@
+﻿<script src="~/Scripts/jquery-2.1.0.js"></script>
+<script src="~/Scripts/fullcalendar.js"></script>
+
+@{
+    ViewBag.Title = "Calendar";
+}
+
+<h2>Calendar</h2>
+
+<div id="calendar"></div>
+
+<script>
+    $(document).ready(function () {
+
+        var $calendar = $('#calendar');
+
+        $calendar.fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            events:
+            {
+                url: '@Url.Action("CalendarItems")',
+                color: "green",
+                textColor: "black"
+            },
+            defaultView: "agendaWeek",
+            agenda: 'h:mm{ - h:mm}',
+
+
+
+        });
+
+
+
+
+     });
+
+</script>

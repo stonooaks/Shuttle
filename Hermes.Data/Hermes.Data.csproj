@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{63F1FCCA-C23B-4300-8FEE-CA849EA2304F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hermes.Data</RootNamespace>
+    <AssemblyName>Hermes.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomAttributes\DateRangeAttribute.cs" />
+    <Compile Include="CustomHtmlHelpers\AutocompleteHelpers.cs" />
+    <Compile Include="Migrations\201510052004180_Initial.cs" />
+    <Compile Include="Migrations\201510052004180_Initial.Designer.cs">
+      <DependentUpon>201510052004180_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Additional.cs" />
+    <Compile Include="Models\AdditionalTrip.cs" />
+    <Compile Include="Models\AdditionalType.cs" />
+    <Compile Include="Models\AuthorizedUser.cs" />
+    <Compile Include="Models\BillingAddress.cs" />
+    <Compile Include="Models\Bus.cs" />
+    <Compile Include="Models\BusTime.cs" />
+    <Compile Include="Models\Cost.cs" />
+    <Compile Include="Models\DailyHour.cs" />
+    <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\DriverShift.cs" />
+    <Compile Include="Models\FamilyRole.cs" />
+    <Compile Include="Models\GasMileage.cs" />
+    <Compile Include="Models\Guest.cs" />
+    <Compile Include="Models\HermesContext.cs" />
+    <Compile Include="Models\Household.cs" />
+    <Compile Include="Models\Intersection.cs" />
+    <Compile Include="Models\Kiawah.cs" />
+    <Compile Include="Models\KiawahAddress.cs" />
+    <Compile Include="Models\KiawahLocation.cs" />
+    <Compile Include="Models\Maintenance.cs" />
+    <Compile Include="Models\Mapping\AdditionalMap.cs" />
+    <Compile Include="Models\Mapping\AdditionalTripMap.cs" />
+    <Compile Include="Models\Mapping\AdditionalTypeMap.cs" />
+    <Compile Include="Models\Mapping\AuthorizedUserMap.cs" />
+    <Compile Include="Models\Mapping\BillingAddressMap.cs" />
+    <Compile Include="Models\Mapping\BusMap.cs" />
+    <Compile Include="Models\Mapping\BusTimeMap.cs" />
+    <Compile Include="Models\Mapping\CostMap.cs" />
+    <Compile Include="Models\Mapping\DailyHourMap.cs" />
+    <Compile Include="Models\Mapping\DriverMap.cs" />
+    <Compile Include="Models\Mapping\DriverShiftMap.cs" />
+    <Compile Include="Models\Mapping\FamilyRoleMap.cs" />
+    <Compile Include="Models\Mapping\GasMileageMap.cs" />
+    <Compile Include="Models\Mapping\GuestMap.cs" />
+    <Compile Include="Models\Mapping\HouseholdMap.cs" />
+    <Compile Include="Models\Mapping\IntersectionMap.cs" />
+    <Compile Include="Models\Mapping\KiawahAddressMap.cs" />
+    <Compile Include="Models\Mapping\KiawahLocationMap.cs" />
+    <Compile Include="Models\Mapping\KiawahMap.cs" />
+    <Compile Include="Models\Mapping\MaintenanceMap.cs" />
+    <Compile Include="Models\Mapping\MemberMap.cs" />
+    <Compile Include="Models\Mapping\PhoneMap.cs" />
+    <Compile Include="Models\Mapping\POIsMap.cs" />
+    <Compile Include="Models\Mapping\RegularMap.cs" />
+    <Compile Include="Models\Mapping\ReturnTripMap.cs" />
+    <Compile Include="Models\Mapping\RouteStopMap.cs" />
+    <Compile Include="Models\Mapping\ShoppingCartMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\TripLocationMap.cs" />
+    <Compile Include="Models\Mapping\TripTypeMap.cs" />
+    <Compile Include="Models\Mapping\VehicleMap.cs" />
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\Phone.cs" />
+    <Compile Include="Models\POIs.cs" />
+    <Compile Include="Models\Regular.cs" />
+    <Compile Include="Models\ReturnTrip.cs" />
+    <Compile Include="Models\RouteStop.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\TripLocation.cs" />
+    <Compile Include="Models\TripType.cs" />
+    <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201510052004180_Initial.resx">
+      <DependentUpon>201510052004180_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

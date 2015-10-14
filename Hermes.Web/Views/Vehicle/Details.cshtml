@@ -1,0 +1,39 @@
+﻿@model Hermes.Data.Models.Vehicle
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h2>@Model.Name</h2>
+ <br />
+ <br />
+
+<div class="jumbotron">
+
+    @using (Html.BeginForm("Edit", "Vehicle", FormMethod.Get)) {
+        <button class="btn btn-default" type="submit">Edit Vehicle</button>
+    }
+
+    <div style="display:inline">
+        @using (Html.BeginForm("Index", "DailyHour", FormMethod.Get, new { id = Model.Id })) {
+            <button class="btn btn-default" type="submit">Daily Hours</button>
+        }
+
+        @using (Html.BeginForm("Index", "GasMileage", FormMethod.Get, new { id = Model.Id })) {
+            <button class="btn btn-default" type="submit">Gas Mileage</button>
+        }
+
+        @using (Html.BeginForm("Index", "Maintenance", FormMethod.Get, new { id = Model.Id })) {
+            <button class="btn btn-default" type="submit">Maintenance</button>
+        }
+    </div>
+
+
+    @using (Html.BeginForm("Index", "Vehicle", FormMethod.Get)) {
+        <button class="btn btn-default" type="submit">Back to List</button>
+    }
+
+</div>
+
+
+

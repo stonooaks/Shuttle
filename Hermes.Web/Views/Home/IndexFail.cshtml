@@ -1,0 +1,50 @@
+﻿@* 
+    *IndexFail: returns a error page with an alert telling the user that the 
+    *           member name is not available
+*@
+
+@model IEnumerable<Hermes.Data.Models.Member>
+
+<script src="~/Scripts/jquery-ui-1.10.4.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
+
+<script>
+    //add alert to the start of the error page
+    alert("Member is not Found");
+</script>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="jumbotron">
+    @using (@Html.BeginForm()) {
+        <b>Member Name</b>
+        @Html.TextBox("searchTerm", null, new { id = "txtSearch" })
+        <button class="btn btn-default btn-sm" onclick="@Url.Action("Results")">Select</button> 
+    }
+</div>
+
+@*<div>
+    <iframe src="http://www.google.com/calendar/embed?src=shuttle%40kica.us&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</div>*@
+<script type="text/javascript">
+
+    //AutoComplete script to add Member JSON to a
+    // autocomplete area
+    $(function () {
+
+        $("#txtSearch").autocomplete({
+            source: '@Url.Action("GetMembers")',
+            minLength: 2
+
+        });
+    });
+
+    //script allows for the keyboard interaction with the
+    // textbox
+    $("#txtSearch").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $("#SearchButton").click();
+        }
+    });
+</script>

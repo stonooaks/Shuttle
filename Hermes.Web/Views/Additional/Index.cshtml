@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Hermes.Data.Models.Additional>
+
+@{
+    ViewBag.Title = "Additional Items";
+}
+
+<h2>Additional Items</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AdditionalType.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdditionalType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cost)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+ 
+@using (Html.BeginForm("Create", "Additional", FormMethod.Get)) {
+    <button type="submit">Create New Additional Item</button>
+}
+<br />
+@using (Html.BeginForm("Create", "AdditionalType", FormMethod.Get)) {
+    <button type="submit">Create Type of Additional Items</button>
+}
+<br />
+@using (Html.BeginForm("Index", "Admin", FormMethod.Get)) {
+    <button type="submit">Back to Admin</button>
+}

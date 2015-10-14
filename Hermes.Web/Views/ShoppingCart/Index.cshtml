@@ -1,0 +1,9 @@
+﻿@model Hermes.Web.ViewModels.ShoppingCartViewModel
+@{
+    ViewBag.Title = "View1";
+}
+
+@Html.Action("MemberEmail", "ShoppingCart", new { regularId = Model.Regular.Id})
+
+@Html.Action("_PhoneList", "EmailDisplay", new { regularId = Model.Regular.Id})
+

@@ -1,0 +1,134 @@
+﻿@model Hermes.Web.ViewModels.RegularViewModel
+
+<script src="~/Scripts/HermesEditRegular.js"></script>
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Regular</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.RegularId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TripTypeId, "TripTypeId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TripTypeId", String.Empty)
+                @Html.ValidationMessageFor(model => model.TripTypeId)
+            </div>
+        </div>
+
+        <div>
+            @Html.HiddenFor(model => model.HHID)
+        </div>
+
+        <div>
+            @Html.HiddenFor(model => model.MemberId)
+        </div>
+        @Html.HiddenFor(model => model.Date)
+        <div class="form-group">
+            @Html.LabelFor(model => model.KiawahLocation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("KiawahLocation", String.Empty)
+                @Html.EditorFor(model => model.OtherAddress)
+                @Html.ValidationMessageFor(model => model.KiawahLocation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TripLocation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TripLocation)
+                @Html.EditorFor(model => model.NonKiawahPickup)
+                @Html.ValidationMessageFor(model => model.TripLocation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DriverId, "Driver", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DriverId", String.Empty)
+                @Html.ValidationMessageFor(model => model.DriverId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VehicleId, "Vehicle", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("VehicleId", String.Empty)
+                @Html.ValidationMessageFor(model => model.VehicleId)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PickupTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PickupTime)
+                @Html.ValidationMessageFor(model => model.PickupTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Members, "Members", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <ul>
+                @foreach (var item in Model.Members) {
+                    <li>@item.Name</li>
+                }
+                    </ul>
+                @Html.ListBox("Members", ViewBag.MemberList as MultiSelectList)
+                @Html.ValidationMessageFor(model => model.Members)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OfficerName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OfficerName)
+                @Html.ValidationMessageFor(model => model.OfficerName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Notes)
+                @Html.ValidationMessageFor(model => model.Notes)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="container">
+    <div class="pull-right">
+        <button class="btn btn-default" onclick="location.href='@Url.Action("Index", "Regular", new { selectedDateParam = Model.Date, HHID = Model.HHID, MemberId = Model.MemberId })'">Go Back</button>
+    </div>
+</div>

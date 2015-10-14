@@ -1,0 +1,82 @@
+﻿@model Hermes.Data.Models.Bus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bus</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BusTime.StopLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusTime.StopLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Guest.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Guest.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Intersection.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Intersection.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kiawah.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kiawah.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RouteStop.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouteStop.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TripType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TripType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

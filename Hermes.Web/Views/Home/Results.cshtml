@@ -1,0 +1,95 @@
+﻿@model Hermes.Data.Models.Member
+
+<p onload="text.js"></p>
+<div class="jumbotron">
+        <table class="table">
+            <tr>
+                <th>
+                    Member Name
+                </th>
+
+                <th>
+                    Member Role                    
+                </th>
+
+                <th>
+                    Household
+                </th>
+
+                <th>
+                    Kiawah Lots
+                </th>
+                 <th>
+                     Authorized Users
+                 </th>
+  
+            </tr>
+
+           
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelitem => Model.Name)
+        </td>
+        <td>
+           @Html.DisplayFor(modelitem => Model.FamilyRole.Description)           
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => Model.Household.Name)
+        </td>
+
+        <td>
+            @foreach (var address in Model.Household.KiawahAddresses) {
+
+                @address.Address1 <br />
+            }
+        </td>
+        <td>
+            @foreach (var user in Model.Household.AuthorizedUsers) {
+                if (user.DateExpired > DateTime.Now) {
+                    
+                }
+                @user.Name <br />
+            }
+        </td>
+        
+
+       
+        </tr>
+            
+        </table> 
+        
+         </div>
+    
+   
+   
+@using (Html.BeginForm("Index", "Regular", FormMethod.Get)) {
+    <div class="input-group">
+        <b style="font-size: 12px">Date To Search</b>
+        <input id ="dateText"type="date" name="selectedDateParam" />
+        <input type="hidden" value="@ViewBag.householdID" name="HHID" />
+        <input type="hidden" value="@ViewBag.MemberId" name="memberId" />
+        <button type="submit" class="btn btn-sm btn-default">Search</button>
+    </div>
+}
+    
+
+<script type="text/javascript">
+    $(function () {
+
+        if (!Modernizr.inputtypes.time) {
+            
+            $('#dateText').addClass("input-sm").datepicker();
+        }
+
+
+    });
+    function test() {
+        var x = "User-agent header sent: " + navigator.userAgent;
+        alert(x);
+    }
+</script>
+    
+
+
+    

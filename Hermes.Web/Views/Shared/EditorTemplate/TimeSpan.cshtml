@@ -1,0 +1,16 @@
+﻿@model System.TimeSpan?
+
+<div class="editor-label">
+    @Html.Label("")
+</div>
+<div class="editor-field">
+    @Html.TextBox("", String.Format("{0:hh\\:mm}", (Model == TimeSpan.MinValue)? null : Model), new { @class="text"})
+</div>
+<script src="~/Scripts/jquery.timepicker.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $("#ViewData.ModelMetadata.PropertyName").timepicker();
+    });
+</script>
+

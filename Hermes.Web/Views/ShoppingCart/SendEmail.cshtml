@@ -1,0 +1,10 @@
+﻿<div class="jumbotron">
+    <p>
+        @ViewBag.Body
+        The Email has been sent.<br />
+
+        <button class="btn btn-success" onclick="location.href='@Url.Action("Index", "Regular", new { selectedDateParam = ViewBag.selectedDateParam, HHID = ViewBag.HHID, MemberId = ViewBag.MemberId })'">OK</button>
+    </p>
+</div>
+
+

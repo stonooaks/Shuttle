@@ -1,0 +1,48 @@
+﻿@model Hermes.Data.Models.Cost
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Cost</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TripType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TripType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.twoperprice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.twoperprice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.addperprice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.addperprice)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

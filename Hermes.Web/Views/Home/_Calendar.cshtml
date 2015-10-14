@@ -1,0 +1,52 @@
+﻿
+<script src="~/Scripts/jquery-2.1.0.js"></script>
+<script src="~/Scripts/jquery-ui-1.10.4.js"></script>
+<script src="~/Scripts/fullcalendar.js"></script>
+<link href="~/Content/fullcalendar.css" rel="stylesheet" />
+
+<button onclick="location.href='@Url.Action("Index", "Home")'">Back</button>
+<div id="calendar" style="padding:10px">
+
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        var $calendar = $('#calendar');
+
+        $calendar.fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            events:
+            {
+                url: '@Url.Action("CalendarItems")',
+                color: "green",
+                textColor: "black"
+            },
+            defaultView: "agendaWeek",
+            agenda: 'h:mm{ - h:mm}',
+            slotMinutes: 15,
+            eventClick: function (event) {
+                if (event.url) {
+                    window.open(event.url);
+                    return false;
+                }
+
+                
+                
+            }
+            
+
+       
+        
+        });
+           
+
+        
+        
+     });
+    
+</script>

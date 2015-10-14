@@ -1,0 +1,99 @@
+﻿@model Hermes.Data.Models.Regular
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Regular</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TripTypeId, "TripTypeId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TripTypeId", String.Empty)
+                @Html.ValidationMessageFor(model => model.TripTypeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KiawahLocation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("KiawahLocation", String.Empty)
+                @Html.ValidationMessageFor(model => model.KiawahLocation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TripLocation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TripLocation)
+                @Html.ValidationMessageFor(model => model.TripLocation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DriverId, "Driver", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DriverId", String.Empty)
+                @Html.ValidationMessageFor(model => model.DriverId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.VehicleId, "Vehicle", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("VehicleId", String.Empty)
+                @Html.ValidationMessageFor(model => model.VehicleId)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date)
+                @Html.ValidationMessageFor(model => model.Date)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PickupTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PickupTime)
+                @Html.ValidationMessageFor(model => model.PickupTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Members, "Members", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBox("Members", ViewBag.MemberList as MultiSelectList)
+                @Html.ValidationMessageFor(model => model.Members)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OfficerName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OfficerName)
+                @Html.ValidationMessageFor(model => model.OfficerName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,59 @@
+﻿@model Hermes.Data.Models.ReturnTrip
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ReturnTrip</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.RegularId)
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.PickupTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PickupTime)
+                @Html.ValidationMessageFor(model => model.PickupTime)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TripLocation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TripLocation)
+                @Html.ValidationMessageFor(model => model.TripLocation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KiawahLocation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("KiawahLocation", String.Empty)
+                @Html.ValidationMessageFor(model => model.KiawahLocation)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+        
+    </div>
+}
+<br />
+<div class="container">
+    <div class="btn-group pull-right">
+        <button class="btn btn-default" onclick="location.href='@Url.Action("Details", "Regular", new { id = Model.RegularId })'">Back to Details</button>
+        <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "ReturnTrip", new { id = Model.Id})'">Delete ReturnTrip</button>
+    </div>
+
+</div>

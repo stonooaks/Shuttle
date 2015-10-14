@@ -1,0 +1,71 @@
+﻿@model Hermes.ViewModels.MainViewModels.ShoppingCartViewModel
+
+<br />
+
+<p></p>
+<p></p>
+<div></div>
+<p><p>@System.DateTime.Now.ToString("MMMM dd, yyyy")</p></p><br />
+@Model.Regular.Household.Name<br />
+@Model.KiawahAddress <br />
+@Model.Regular.Phone
+
+<br />
+<br />
+<br />
+
+<div>
+    RE: Kiawah Shuttle Service by KICA Change of Reservation
+    <br />
+    <br />
+    <br />
+
+    Dear @Model.MemberName, <br />
+    <br /><br />
+    Thank you for contacting KICA regarding your KICA's Shuttle Service reservation.  You have changed<br />
+    your original reservation on @Model.Date to @Model.TripLocation<br />
+    <br />
+    Pickup Date: @Model.Date <br />
+    Pickup Time: @Model.PickupTime <br />
+    Pickup Location: @Model.TripLocation <br />
+    Number of Passengers: @Model.Count <br />
+    <br />
+    @if (!Model.Regular.TripType.Name.Contains("Airport") || Model.Regular.ReturnTrips != null ) {
+
+        foreach (var item in Model.Regular.ReturnTrips) {
+            <div>
+                Return Date: @Model.Date<br />
+                Return Time: @item.PickupTime <br />
+                Return Location @item.TripLocation<br />
+                Number of Passengers: @Model.Count <br />
+            </div>
+        }
+        
+    }
+
+    <br />
+    
+    $@Model.TotalCost will be charged to your member account upon completion of your reservation.<br />
+    <br /><br />
+    If you have any questions, please contact KICA Security at 843-768-5566 or email shuttle@kica.us.  We<br />
+    appreciate your business and hope you will consider the Kiawah Shuttle Service for future travels.
+    <br />
+    <br />
+    Sincerely,
+    <br />
+    <br />
+    <br />
+    Kiawah Island Community Association<br />
+    <br />
+
+    <p style="font-style:italic; font-size:8pt">
+        *Gratuities are graciously accepted for exceptional service.<br />
+        <br />
+        *Terms: By receipt of this email you authorize the Kiawah Island Community Association to charge your member
+        account as mentioned above.
+    </p>
+
+</div>
+
+
+
